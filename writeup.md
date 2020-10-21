@@ -50,7 +50,9 @@ As a first version, I designed the pipeline like we could see in quizzes of the 
 
 Each step could be covered by specific helper functions provided in this project so I made full use of them.
 
-Second version/evolution consisted to extrapolate continuous or discontinuous segment of one left and one right lane, into longer lane lines. For this purpose, mainly the helper function draw_lines() needs to be modified, in the following way : 
+The second version/evolution consisted to extrapolate continuous or discontinuous segment of one left and one right lane, into longer lane lines. 
+
+For this purpose, mainly the helper function draw_lines() needs to be modified, in the following way : 
 
 - draw_lines() function is called by hough_lines() to draw line segments detected by Houth Transformation
 - Those line segments are represented by a pair of coordinates (x,y) representing extremeties of each lines.
