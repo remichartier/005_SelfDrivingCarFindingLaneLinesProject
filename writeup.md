@@ -26,8 +26,7 @@ The goals / steps of this project are the following:
 As a first version, I designed the pipeline like we could see in quizzes of the Computer vision lessons : 
 
 - It takes an image or an image filename as an input, read the image.
-
-<img src="test_images/solidWhiteCurve.jpg width="480" alt="Combined Image" />
+<img src="test_images/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
 
 - Transform input image into **gray** image. (named "gray")
 <img src="test_images_output/01_Gray/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
