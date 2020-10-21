@@ -61,8 +61,10 @@ For this purpose, mainly the helper function draw_lines() needs to be modified, 
 - Then for each left and right list of coordinates, run those lists through np.polyfit() function which will interpolate a line y=mx+b interpolating a virtual line trying to run as close as possible through those coordinate list.
 - This is giving us 2 line equations, one for left lane, one for right lane.
 - Given we know 2 extremities y coordinates for each left/right lanes (y1 = height of image, y2 = height of top lane extremity we want to draw), we can then find the x coordinates using the 2 left/right y=mx+b equations.
+
 - And then we have necessary coordinates to use openCV drawing function to draw extrapolated left and right lanes from image bottom to a certain vertical position in the picture.
 <img src="test_images_output/05_HoughTransformExtrapolate/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
+
 - We then follow the previous pipeline which will combine the 2 pictures and overlay the extrapolated lanes.
 <img src="test_images_output/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
 
