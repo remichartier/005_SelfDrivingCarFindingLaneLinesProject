@@ -26,20 +26,20 @@ The goals / steps of this project are the following:
 As a first version, I designed the pipeline like we could see in quizzes of the Computer vision lessons : 
 
 - It takes an image or an image filename as an input, read the image.
-<img src="test_images/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
+(test_images/solidWhiteCurve.jpg)
 
-- Transform input image into gray image. (named "gray")
+- Transform input image into **gray** image. (named "gray")
 <img src="test_images_output/01_Gray/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
 
-- Apply Gaussian blur to reduce image noise. (output is "blur_gray" image)
+- Apply **Gaussian blur** to reduce image noise. (output is "blur_gray" image)
 
-- Run gray image through openCV Canny Edge Detection (output is "edges" image)
+- Run gray image through openCV **Canny Edge Detection** (output is "edges" image)
 <img src="test_images_output/02_CannyEdgeDetection/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
 
-- Run Canny Edge Detection image through 4 side polygon Mask to only retain edges in our Region of Interest and so discard the other regions to detect lanes. (output is "masked_edges" image)
+- Run Canny Edge Detection image through 4 side polygon Mask to only retain edges in our **Region of Interest** and so discard the other regions to detect lanes. (output is "masked_edges" image)
 <img src="test_images_output/03_MaskedEdge/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
 
-- Run this Edge Masked image through hough Transform to filter to select/filter line segments we would like to highlight/retain in the image. That's were continuous or discontinuous lane lines segments are showed and colorized. (output is "line_img")
+- Run this Edge Masked image through **Hough Transform** to transform the dots from Canny Edge Detection process into line segments we would like to highlight/retain in the image. That's were continuous or discontinuous lane lines segments are showed and colorized. (output is "line_img")
 <img src="test_images_output/04_HoughTransform/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
 
 - Merge original image with "line_img" to result in "lines_edge" image, showing original image with lane borders colorized and overlayed.
