@@ -26,12 +26,18 @@ The goals / steps of this project are the following:
 As a first version, I designed the pipeline like we could see in quizzes of the Computer vision lessons : 
 
 - It takes an image or an image filename as an input, read the image.
+<img src="test_images/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
 - Transform input image into gray image. (named "gray")
+<img src="test_images_output/01_Gray/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
 - Apply Gaussian blur to reduce image noise. (output is "blur_gray" image)
 - Run gray image through openCV Canny Edge Detection (output is "edges" image)
+<img src="test_images_output/02_CannyEdgeDetection/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
 - Run Canny Edge Detection image through 4 side polygon Mask to only retain edges in our Region of Interest and so discard the other regions to detect lanes. (output is "masked_edges" image)
+<img src="test_images_output/03_MaskedEdge/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
 - Run this Edge Masked image through hough Transform to filter to select/filter line segments we would like to highlight/retain in the image. That's were continuous or discontinuous lane lines segments are showed and colorized. (output is "line_img")
+<img src="test_images_output/04_HoughTransform/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
 - Merge original image with "line_img" to result in "lines_edge" image, showing original image with lane borders colorized and overlayed.
+<img src="test_images_output/06_LineEdgeImage/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
 - At the end, save the output image into different files.
 
 Each step could be covered by specific helper functions provided in this project so I made full use of them.
@@ -40,33 +46,20 @@ Second version/evolution consisted to extrapolate continuous or discontinuous se
 
 - draw_lines() function is called by hough_lines() to draw line segments detected by Houth Transformation
 - Those line segments are represented by a pair of coordinates (x,y) representing extremeties of each lines.
-- idea is to list all those coordinates together, which would ideally belong to the same right or left lane, and extrapolate a longer lane going from bottom of image up to a certain vertical level of the image.
+- Idea is to list all those coordinates together, which would ideally belong to the same right or left lane, and extrapolate a longer lane going from bottom of image up to a certain vertical level of the image.
 - Way to separate line segments between left or righ lane is by calculating slope of each segments. If slope < 0, store (x,y) in left coordinate list. If slope > 0, store coordinates in right coordinate list.
-- then for each left and right list of coordinates, run those lists through np.polyfit() function which will interpolate a line y=mx+b interpolating a virtual line trying to run as close as possible through those coordinate list.
+- Then for each left and right list of coordinates, run those lists through np.polyfit() function which will interpolate a line y=mx+b interpolating a virtual line trying to run as close as possible through those coordinate list.
 - This is giving us 2 line equations, one for left lane, one for right lane.
 - Given we know 2 extremities y coordinates for each left/right lanes (y1 = height of image, y2 = height of top lane extremity we want to draw), we can then find the x coordinates using the 2 left/right y=mx+b equations.
 - And then we have necessary coordinates to use openCV drawing function to draw extrapolated left and right lanes from image bottom to a certain vertical position in the picture.
+<img src="test_images_output/05_HoughTransformExtrapolate/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
+- We then follow the previous pipeline which will combine the 2 pictures and overlay the extrapolated lanes.
+<img src="test_images_output/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
 
 Note : 
-- My code includes several file save primitives to save image snapshots on main steps for write-up illustrations seen below : 
- 
-Example showed for one specific image, but you can find similar for all the other example images provided in this project, spread over output subfolders.
+- My code includes several file save primitives to save image snapshots on main steps for write-up illustrations as shown above. 
+- Example showed for one specific image, but you can find similar for all the other example images provided in this project, spread over output subfolders.
 
-![Initial image][test_images/solidWhiteCurve.jpg]
-
-![Gray Conversion][test_images_output/01_Gray/solidWhiteCurve.jpg]
-
-![Canny Edge Detection][test_images_output/02_CannyEdgeDetection/solidWhiteCurve.jpg]
-
-![Masked Edge][test_images_output/03_MaskedEdge/solidWhiteCurve.jpg]
-
-![Hough Transform][test_images_output/04_HoughTransform/solidWhiteCurve.jpg]
-
-![Hough Transform with Lanes extrapolation][test_images_output/05_HoughTransformExtrapolate/solidWhiteCurve.jpg]
-
-![Output image][test_images_output/06_LineEdgeImage/solidWhiteCurve.jpg]
-
-![Output image with Lanes extrapolation][test_images_output/solidWhiteCurve.jpg]
 
 
 ### 2. Identify potential shortcomings with your current pipeline
