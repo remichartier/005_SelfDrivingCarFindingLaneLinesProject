@@ -102,4 +102,4 @@ Possible improvements I can think about :
 
 2. Fix erratic extrapolate lanes when testing with challenge video.
 
-3. optimize better the Canny Edge / Hough Transform to avoid detecting horizontal edges for Lane lines.
+3. Optimize better the Canny Edge / Hough Transform to avoid detecting horizontal edges for Lane lines.
