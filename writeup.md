@@ -98,7 +98,7 @@ Here are few shortcomings I can think about with my current pipeline :
 
 Possible improvements I can think about : 
 
-1. For Lane extrapolation, I used a np.polyfit() of 1 degree only, ie extrapoling lines. We could try to extrapolate longuer lanes with curves using more degrees in the np.plyfit function to handle curves.
+1. For Lane extrapolation, I used a np.polyfit() of 1 degree only, ie extrapoling lines. We could try to extrapolate longuer lanes with curves using more degrees in the np.polyfit() function to handle curves.
 
 2. Fix erratic extrapolate lanes when testing with challenge video.
 
